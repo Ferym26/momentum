@@ -56,7 +56,7 @@ export default {
 				url: requestStr,
 			})
 				.then(({ data }) => {
-					console.log(data);
+					// console.log(data);
 					this.isError = false;
 					this.icon = data.weather[0].id;
 					this.temp = data.main.temp;
