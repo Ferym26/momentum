@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(''),
+        url('~@/assets/fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+        url('~@/assets/fonts/Roboto/Roboto-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local(''),
+        url('~@/assets/fonts/Roboto/Roboto-Light.woff2') format('woff2'),
+        url('~@/assets/fonts/Roboto/Roboto-Light.woff') format('woff');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local(''),
+        url('~@/assets/fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
+        url('~@/assets/fonts/Roboto/Roboto-Medium.woff') format('woff');
+}
+
+// @font-face {
+//     font-family: 'OpenSansCondensed';
+//     font-style: normal;
+//     font-weight: 700;
+//     font-display: swap;
+//     src: local(''),
+//         url('~@/assets/fonts/OpenSansCondensed/OpenSansCondensed-700.woff2') format('woff2'),
+//         url('~@/assets/fonts/OpenSansCondensed/OpenSansCondensed-700.woff') format('woff');
+// }
+
+@font-face {
+    font-family: 'YanoneKaffeesatz';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local(''),
+        url('~@/assets/fonts/YanoneKaffeesatz/YanoneKaffeesatz-700.woff2') format('woff2'),
+        url('~@/assets/fonts/YanoneKaffeesatz/YanoneKaffeesatz-700.woff') format('woff');
+}
