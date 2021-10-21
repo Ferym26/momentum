@@ -8,10 +8,12 @@
 				@click='PrevSlide()'
 				aria-label='prev slide'
 			)
+				img(:src="require(`@/assets/svg/slider-prev.svg`)", alt="bg")
 			button.bg-slider__btn.bg-slider__btn--next(
 				@click='NextSlide()'
 				aria-label='next slide'
 			)
+				img(:src="require(`@/assets/svg/slider-next.svg`)", alt="bg")
 </template>
 
 <script>

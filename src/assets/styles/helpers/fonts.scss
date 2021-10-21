@@ -1,11 +1,21 @@
 @font-face {
-	font-family: 'Arial-MT';
+	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
 	src: local(''),
-		url('~@/assets/fonts/Arial-MT.woff2') format('woff2'),
-		url('~@/assets/fonts/Arial-MT.woff') format('woff');
+		url('~@/assets/fonts/Roboto-Regular.woff2') format('woff2'),
+		url('~@/assets/fonts/Roboto-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: local(''),
+		url('~@/assets/fonts/Roboto-Bold.woff2') format('woff2'),
+		url('~@/assets/fonts/Roboto-Bold.woff') format('woff');
 }
 
 @font-face {

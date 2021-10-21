@@ -3,7 +3,8 @@
 		.blockquote__action
 			button.blockquote__reload(
 				@click='getRandomQuote()'
-			) Reload
+			)
+				img(:src="require(`@/assets/svg/reload.svg`)", alt="bg")
 		.blockquote__content
 			.blockquote__title {{ quote.text }}
 			.blockquote__name {{ quote.author }}
