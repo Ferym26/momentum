@@ -45,6 +45,7 @@ export default {
 	},
 	mounted() {
 		this.getWeather();
+		this.getCityFromLS();
 	},
 	methods: {
 		getWeather() {
@@ -71,13 +72,22 @@ export default {
 					this.isLoaded = true;
 				})
 		},
-		sendRequest () {
+		sendRequest() {
 			if (this.timer) {
 				window.clearTimeout(this.timer);
 			}
 			this.timer = window.setTimeout(() => {
 				this.getWeather();
+				this.saveCityToLS();
 			}, 500);
+		},
+		saveCityToLS() {
+			localStorage.setItem('city', this.city);
+		},
+		getCityFromLS() {
+			if(localStorage.getItem('city')) {
+				this.city = localStorage.getItem('city');
+			}
 		},
 	},
 }
