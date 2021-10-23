@@ -2,7 +2,7 @@
 	.blockquote
 		.blockquote__action
 			button.blockquote__reload(
-				@click='getRandomQuote()'
+				@click.prevent='getRandomQuote()'
 			)
 				img(:src="require(`@/assets/svg/reload.svg`)", alt="bg")
 		.blockquote__content

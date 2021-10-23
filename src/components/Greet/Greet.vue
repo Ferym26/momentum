@@ -1,12 +1,12 @@
 <template lang='pug'>
 	.greet
-		.greet__title Good Evening,
+		.greet__title Доброе утро,
 		.greet__form
 			input.greet__input(
 				v-model='name'
 				@input="setNameToLS()"
 				type="text"
-				placeholder="[Enter name]"
+				placeholder="[Введите имя]"
 			)
 </template>
 
