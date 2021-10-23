@@ -3,7 +3,8 @@
 		.bg-slider__bg
 			.bg-slider__bg-pic(
 				v-if='dayPeriod'
-				:style='bgURL'
+				:style='backgroundImageStyle'
+				:class='{"blur": imageLoading}'
 			)
 		.bg-slider__nav
 			button.bg-slider__btn.bg-slider__btn--prev(
@@ -25,48 +26,76 @@ export default {
 	data() {
 		return {
 			number: null,
+			imageMin: 1,
+			imageMax: 20,
+			imageLoading: true,
+			imageSrc: ''
 		}
 	},
 	created() {
-		this.number = this.random();
+		this.number = this.random(this.imageMin, this.imageMax);
+		this.$store.dispatch('DayPeriod')
+		.then(() => {
+			this.imageSrc = this.bgURL;
+			this.imageLoading = false;
+		})
 	},
 	computed: {
 		...mapGetters({
 			dayPeriod: 'getDayPeriod',
 		}),
-		bgURL() {
+		getBaseWithDayPeriod(){
 			const periods = ['night', 'morning', 'evening', 'night'];
 			const baseURL = 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/';
-			const formatedNum = (value) => {
-				if (value > 0 && value < 10) {
-					return `0${value}`
-				} else {
-					return value
-				}
-			}
-			const url = `${baseURL}${periods[this.dayPeriod]}/${formatedNum(this.number)}.jpg`;
-			return {
-				backgroundImage: `url(${url})`,
-			}
+			return `${baseURL}${periods[this.dayPeriod]}/`;
 		},
+		bgURL() {
+			const url = `${this.getBaseWithDayPeriod}${this.TwoDigNum(this.number)}.jpg`;
+			return url;
+		},
+		backgroundImageStyle(){
+			return {
+				backgroundImage: `url(${this.imageSrc})`,
+			}
+		}
 	},
 	methods: {
+		TwoDigNum(num){
+			return this.$options.filters.TwoDigNum(num);
+		},
 		prevSlide() {
-			if (this.number > 1) {
+			if (this.number > this.imageMin) {
 				this.number -= 1
 			} else {
-				this.number = 20
+				this.number = this.imageMax
 			}
+
+			this.newImage();
 		},
 		nextSlide() {
-			if (this.number < 20) {
+			if (this.number < this.imageMax) {
 				this.number += 1
 			} else {
-				this.number = 1
+				this.number = this.imageMin
 			}
+
+			this.newImage();
 		},
-		random() {
-			return Math.round(Math.random() * (20 - 1) + 1);
+		newImage(){
+			const img = new Image();
+			this.imageLoading = true;
+			img.src = this.bgURL;
+			img.onload = () => {
+				this.imageSrc = this.bgURL
+				this.imageLoading = false;
+			}
+
+		},
+		setImageSrc(url){
+			this.imageSrc = url;
+		},
+		random(min, max) {
+			return Math.round(Math.random() * (max - min) + min);
 		},
 	},
 }
