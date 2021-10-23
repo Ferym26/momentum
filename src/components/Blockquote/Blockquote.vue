@@ -24,7 +24,7 @@ export default {
 	},
 	methods: {
 		random() {
-			return Math.floor(Math.random() * (20 - 1) + 1);
+			return Math.round(Math.random() * (20 - 1) + 1);
 		},
 		getRandomQuote() {
 			this.quote = blockquotes[this.random()];

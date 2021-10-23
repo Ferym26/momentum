@@ -44,16 +44,16 @@ export default {
 			}, 500);
 		},
 		setTitle() {
-			if (this.dayPeriod === 1) {
+			if (this.dayPeriod === 0) {
 				return 'Good night'
 			}
-			if (this.dayPeriod === 2) {
+			if (this.dayPeriod === 1) {
 				return 'Good morning'
 			}
-			if (this.dayPeriod === 3) {
+			if (this.dayPeriod === 2) {
 				return 'Good afternoon'
 			}
-			if (this.dayPeriod === 4) {
+			if (this.dayPeriod === 3) {
 				return 'Good evening'
 			}
 			// с 6:00 до 11:59 - Good morning / Доброе утро / Добрай раніцы

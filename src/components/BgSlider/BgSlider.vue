@@ -1,42 +1,64 @@
 <template lang='pug'>
 	.bg-slider
 		.bg-slider__bg(
-			:style='SetBgImg()'
+			:style='bgURL'
 		)
+		p {{ bgURL }}
 		.bg-slider__nav
 			button.bg-slider__btn.bg-slider__btn--prev(
-				@click='PrevSlide()'
+				@click='prevSlide()'
 				aria-label='prev slide'
 			)
 				img(:src="require(`@/assets/svg/slider-prev.svg`)", alt="bg")
 			button.bg-slider__btn.bg-slider__btn--next(
-				@click='NextSlide()'
+				@click='nextSlide()'
 				aria-label='next slide'
 			)
 				img(:src="require(`@/assets/svg/slider-next.svg`)", alt="bg")
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
 	name: 'BgSlider',
 	data() {
 		return {
-			img: 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg',
+			number: null,
 		}
 	},
+	created() {
+		this.number = this.random();
+	},
+	computed: {
+		...mapGetters({
+			dayPeriod: 'getDayPeriod',
+		}),
+		bgURL() {
+			const periods = ['night', 'morning', 'evening', 'night'];
+			const baseURL = 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/';
+			const url = `${baseURL}${periods[this.dayPeriod]}/${this.number}.jpg`;
+			return {
+				backgroundImage: `url(${url})`,
+			}
+		},
+	},
 	methods: {
-		СreateBgURL() {
-			// const baseURL = 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/';
-
+		prevSlide() {
+			if (this.number > 1) {
+				this.number -= 1
+			} else {
+				this.number = 20
+			}
 		},
-		SetBgImg() {
-			return 'background-image: url("https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg")'
+		nextSlide() {
+			if (this.number < 20) {
+				this.number += 1
+			} else {
+				this.number = 1
+			}
 		},
-		PrevSlide() {
-			console.log('prev');
-		},
-		NextSlide() {
-			console.log('next');
+		random() {
+			return Math.round(Math.random() * (20 - 1) + 1);
 		},
 	},
 }
