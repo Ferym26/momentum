@@ -3,8 +3,8 @@
 		.winamp__player
 			audio(
 				ref='audio'
-				:src="require(`@/assets/sounds/${activeTrack.src}`)"
 			)
+				source(type="audio/mp3" :src="require(`@/assets/sounds/${activeTrack.src}`)")
 		.winamp__nav
 			button.winamp__btn.winamp__btn--prev(
 				@click.prevent='prevTrack()'
@@ -31,11 +31,17 @@
 			.winamp__track(
 				v-for='(item, i) in audio'
 				:class='{active: activeTrackId === i}'
-				@click='play(item)'
+				@click='play(item, i)'
 			)
 				.winamp__track-icon
 					img.play(
+						v-if="activeTrackId !== i || !isPlay"
 						:src="require(`@/assets/svg/play.svg`)"
+						alt="bg"
+					)
+					img.pause(
+						v-else
+						:src="require(`@/assets/svg/pause.svg`)",
 						alt="bg"
 					)
 				.winamp__track-title {{ item.title }}
@@ -73,11 +79,21 @@ export default {
 				this.isPlay = true;
 			}
 		},
-		play(track) {
+		play(track, index) {
+			if(index === this.activeTrackId){
+				this.togglePlay();
+				return;
+			} else if(index !== undefined){
+				this.activeTrackId = index;
+			}
+			
+			this.$refs.audio.pause();
 			this.activeTrack = track;
-			setTimeout(() => {
+			this.$refs.audio.load();
+			this.$refs.audio.currentTime = 0;
+			// setTimeout(() => {
 				this.$refs.audio.play(); // TODO: я не понял почему это работает именно так
-			}, 100)
+			// }, 100)
 			this.isPlay = true;
 		},
 		nextTrack() {
