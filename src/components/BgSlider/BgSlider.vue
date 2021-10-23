@@ -2,7 +2,7 @@
 	.bg-slider
 		.bg-slider__bg
 			.bg-slider__bg-pic(
-				v-if='dayPeriod'
+				v-if='dayPeriod + 1'
 				:style='backgroundImageStyle'
 				:class='{"blur": imageLoading}'
 			)
@@ -35,10 +35,10 @@ export default {
 	created() {
 		this.number = this.random(this.imageMin, this.imageMax);
 		this.$store.dispatch('DayPeriod')
-		.then(() => {
-			this.imageSrc = this.bgURL;
-			this.imageLoading = false;
-		})
+			.then(() => {
+				this.imageSrc = this.bgURL;
+				this.imageLoading = false;
+			})
 	},
 	computed: {
 		...mapGetters({

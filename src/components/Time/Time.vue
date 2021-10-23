@@ -37,8 +37,8 @@ export default {
 				day: '2-digit',
 			};
 			this.interval = setInterval(() => {
-				this.clocks = new Intl.DateTimeFormat('en-En', optionsClock).format(new Date());
-				this.calendar = new Intl.DateTimeFormat('en-En', optionsCalendar).format(new Date());
+				this.clocks = new Intl.DateTimeFormat('ru-Ru', optionsClock).format(new Date());
+				this.calendar = new Intl.DateTimeFormat('en-US', optionsCalendar).format(new Date());
 				this.DayPeriod();
 			}, 1000);
 		},

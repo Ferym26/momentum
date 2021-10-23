@@ -1,5 +1,7 @@
 <template lang='pug'>
-	.blockquote
+	.blockquote(
+		v-if='componentVisibles.blockquote'
+	)
 		.blockquote__action
 			button.blockquote__reload(
 				@click.prevent='getRandomQuote()'
@@ -11,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import blockquotes from "@/assets/data/blockquotes.js"
 export default {
 	name: 'Blockquote',
@@ -18,6 +21,11 @@ export default {
 		return {
 			quote: {},
 		}
+	},
+	computed: {
+		...mapGetters({
+			componentVisibles: 'getComponentVisibles'
+		})
 	},
 	mounted() {
 		this.getRandomQuote();

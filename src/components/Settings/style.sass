@@ -1,0 +1,66 @@
+@import '../../assets/styles/helpers/variables'
+@import '../../assets/styles/helpers/mixin'
+
+.settings
+	position: relative
+	grid-column: 1 / span 1
+	grid-row: 4 / span 1
+	z-index: 20
+
+	&__action
+		position: absolute
+		bottom: 30px
+		left: 30px
+
+	&__menu
+		position: fixed
+		top: 35px
+		left: 50%
+		padding: 30px 50px
+		background-color: #fff
+		transform: translate(-50%, -300px)
+		transition: transform 0.4s ease-in-out
+		will-change: transform
+
+		&.is-open
+			transform: translate(-50%, 0px)
+
+	&__item
+		display: flex
+		align-items: center
+		gap: 15px
+		font-size: 20px
+
+		&:not(:last-child)
+			margin-bottom: 15px
+
+		.label
+			flex: 0 0 100px
+			max-width: 100px
+			font-size: 20px
+
+		.element
+			display: block
+			flex: 0 0 150px
+			max-width: 150px
+			white-space: nowrap
+
+		.input
+
+		.select
+			display: block
+			font-size: 20px
+
+	.s-button
+		display: block
+		+sizeblock(64px)
+		border: none
+		background-color: $trp
+		cursor: pointer
+		transition: transform 0.3s ease-in-out
+
+		&:hover
+			transform: scale(1.1)
+
+		img
+			+sizeblock(100%)

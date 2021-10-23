@@ -1,5 +1,7 @@
 <template lang='pug'>
-	.winamp
+	.winamp(
+		v-if='componentVisibles.winamp'
+	)
 		.winamp__player
 			audio(
 				ref='audio'
@@ -48,6 +50,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import audio from '@/assets/data/audio'
 export default {
 	name: 'Winamp',
@@ -58,6 +61,11 @@ export default {
 			activeTrack: {},
 			activeTrackId: 0,
 		}
+	},
+	computed: {
+		...mapGetters({
+			componentVisibles: 'getComponentVisibles'
+		})
 	},
 	created() {
 		this.setActiveTrack();
@@ -86,7 +94,7 @@ export default {
 			} else if(index !== undefined){
 				this.activeTrackId = index;
 			}
-			
+
 			this.$refs.audio.pause();
 			this.activeTrack = track;
 			this.$refs.audio.load();

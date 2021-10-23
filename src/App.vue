@@ -6,6 +6,7 @@
 		Blockquote
 		Time
 		Greet
+		Settings
 </template>
 
 <script>
@@ -15,6 +16,7 @@ import Weather from "@/components/Weather/Weather";
 import Blockquote from "@/components/Blockquote/Blockquote";
 import Time from "@/components/Time/Time";
 import Greet from "@/components/Greet/Greet";
+import Settings from "@/components/Settings/Settings";
 export default {
 	name: 'App',
 	components: {
@@ -24,6 +26,7 @@ export default {
 		Blockquote,
 		Time,
 		Greet,
+		Settings,
 	},
 	created() {
 		this.checkList();

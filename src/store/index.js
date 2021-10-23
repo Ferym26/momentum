@@ -6,20 +6,34 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		dayPeriod: null, // 0 ночь, 1 утро, 2 день, 3 вечер
+		componentVisibles: {
+			winamp: true,
+			weather: true,
+			blockquote: true,
+			greet: true,
+			time: true,
+		},
 	},
 	getters: {
 		getDayPeriod (state) {
 			return state.dayPeriod;
+		},
+		getComponentVisibles (state) {
+			return state.componentVisibles;
 		},
 	},
 	mutations: {
 		setDayPeriod (state, payload) {
 			state.dayPeriod = payload;
 		},
+		setComponentVisibles (state, payload) {
+			state.componentVisibles[payload.name] = payload.value;
+			localStorage.setItem(payload.name, payload.value);
+		},
 	},
 	actions: {
 		DayPeriod ({ commit }) {
-			const currentHour = +new Intl.DateTimeFormat('en-En', {hour: '2-digit', hour12: false}).format(new Date()); // получаем числовое значение часа
+			const currentHour = +new Intl.DateTimeFormat('ru-Ru', {hour: '2-digit', hour12: false}).format(new Date()); // получаем числовое значение часа
 			if (currentHour >= 0 && currentHour < 6) {
 				commit('setDayPeriod', 0);
 			}
