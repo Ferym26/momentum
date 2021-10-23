@@ -74,23 +74,7 @@ export default {
 					value: 0,
 				},
 				{
-					task: '',
-					value: 0,
-				},
-				{
-					task: '',
-					value: 0,
-				},
-				{
-					task: '',
-					value: 0,
-				},
-				{
-					task: '',
-					value: 0,
-				},
-				{
-					task: '',
+					task: 'Дополнительный функционал на выбор',
 					value: 0,
 				},
 			];
