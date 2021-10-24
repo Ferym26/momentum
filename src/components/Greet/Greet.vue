@@ -27,6 +27,7 @@ export default {
 	computed: {
 		...mapGetters({
 			dayPeriod: 'getDayPeriod',
+			lang: 'getLang',
 		}),
 	},
 	methods: {
@@ -45,21 +46,17 @@ export default {
 		},
 		setTitle() {
 			if (this.dayPeriod === 0) {
-				return 'Good night'
+				return this.lang === 'en' ? 'Good night' : 'Спокойной ночи'
 			}
 			if (this.dayPeriod === 1) {
-				return 'Good morning'
+				return this.lang === 'en' ? 'Good morning' : 'Доброе утро'
 			}
 			if (this.dayPeriod === 2) {
-				return 'Good afternoon'
+				return this.lang === 'en' ? 'Good afternoon' : 'Добрый день'
 			}
 			if (this.dayPeriod === 3) {
-				return 'Good evening'
+				return this.lang === 'en' ? 'Good evening' : 'Добрый вечер'
 			}
-			// с 6:00 до 11:59 - Good morning / Доброе утро / Добрай раніцы
-			// с 12:00 до 17:59 - Good afternoon / Добрый день / Добры дзень
-			// с 18:00 до 23:59 - Good evening / Добрый вечер / Добры вечар
-			// с 00:00 до 5:59 - Good night / Доброй/Спокойной ночи / Дабранач
 		},
 	},
 }
