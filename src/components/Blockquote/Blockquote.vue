@@ -28,7 +28,10 @@ export default {
 	computed: {
 		...mapGetters({
 			componentVisibles: 'getComponentVisibles',
-			lang: 'getLang',
+			// lang: 'getLang',
+		}),
+		...mapGetters('settings', {
+			lang: 'getLang'
 		})
 	},
 	mounted() {
@@ -36,7 +39,7 @@ export default {
 	},
 	methods: {
 		random() {
-			return Math.round(Math.random() * (20 - 1) + 1);
+			return Math.round(Math.random() * 19);
 		},
 		getRandomQuote() {
 			this.quote = blockquotes[this.random()];
