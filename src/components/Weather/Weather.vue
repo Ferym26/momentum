@@ -1,5 +1,7 @@
 <template lang='pug'>
-	.weather
+	.weather(
+		v-if='settings.visibility.Weather'
+	)
 		.weather__city
 			input.weather__input(
 				v-model='city'
@@ -51,6 +53,7 @@ export default {
 	computed: {
 		...mapGetters({
 			lang: 'getLang',
+			settings: 'settings/getSettings',
 		}),
 	},
 	watch: {

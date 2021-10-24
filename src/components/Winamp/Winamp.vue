@@ -1,6 +1,6 @@
 <template lang='pug'>
 	.winamp(
-		v-if='componentVisibles.winamp'
+		v-if='settings.visibility.Winamp'
 	)
 		.winamp__player
 			audio(
@@ -64,7 +64,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			componentVisibles: 'getComponentVisibles'
+			settings: 'settings/getSettings',
 		})
 	},
 	created() {

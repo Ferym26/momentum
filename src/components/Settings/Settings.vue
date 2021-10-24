@@ -38,8 +38,8 @@ export default {
 	name: 'Settings',
 	data() {
 		return {
-			isOpen: true,
-			componentsVisibility: ['Winamp', 'Weather'],
+			isOpen: false,
+			componentsVisibility: ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote'],
 			componentsVisibilityChecked: [],
 
 		}
@@ -61,9 +61,6 @@ export default {
 	created() {
 		this.updateCheckboxes();
 	},
-	mounted() {
-		//
-	},
 	methods: {
 		getVisibility(){
 		},
@@ -73,7 +70,7 @@ export default {
 		updateCheckboxes(){
 			const visibility = this.visibility;
 			if(!visibility){
-				this.componentsVisibilityChecked = ['Winamp', 'Weather'];
+				this.componentsVisibilityChecked = ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote'];
 			}
 
 			let checked = [];
@@ -88,9 +85,9 @@ export default {
 	},
 	watch: {
 		visibility: {
-      handler: 'updateCheckboxes',
-      deep: true,
-      immediate: true
+			handler: 'updateCheckboxes',
+			deep: true,
+			immediate: true,
 		}
 	}
 }

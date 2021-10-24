@@ -1,5 +1,7 @@
 <template lang='pug'>
-	.time
+	.time(
+		v-if='settings.visibility.Time'
+	)
 		.time__clocks {{ clocks }}
 		.time__date {{ calendar }}
 </template>
@@ -18,6 +20,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
+			settings: 'settings/getSettings',
 			lang: 'getLang',
 		}),
 		calendarLocale() {
@@ -26,6 +29,7 @@ export default {
 	},
 	mounted() {
 		this.setTime();
+		this.DayPeriod();
 	},
 	methods: {
 		...mapActions({
@@ -48,7 +52,7 @@ export default {
 			this.interval = setInterval(() => {
 				this.clocks = new Intl.DateTimeFormat('ru-Ru', optionsClock).format(new Date());
 				this.calendar = new Intl.DateTimeFormat(_this.calendarLocale, optionsCalendar).format(new Date());
-				this.DayPeriod();
+				// this.DayPeriod();
 			}, 1000);
 		},
 	},

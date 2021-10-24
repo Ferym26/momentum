@@ -1,5 +1,7 @@
 <template lang='pug'>
-	.greet
+	.greet(
+		v-if='settings.visibility.Greet'
+	)
 		.greet__title {{ setTitle() + ',' }}
 		.greet__form
 			.greet__name {{ name }}
@@ -7,7 +9,7 @@
 				v-model='name'
 				@input="setNameToLS()"
 				type="text"
-				placeholder="[Enter name]"
+				:placeholder="lang === 'en' ? '[Enter name]' : '[Введите имя]'"
 			)
 </template>
 
@@ -28,6 +30,7 @@ export default {
 		...mapGetters({
 			dayPeriod: 'getDayPeriod',
 			lang: 'getLang',
+			settings: 'settings/getSettings',
 		}),
 	},
 	methods: {

@@ -1,6 +1,6 @@
 <template lang='pug'>
 	.blockquote(
-		v-if='componentVisibles.blockquote'
+		v-if='settings.visibility.Blockquote'
 	)
 		.blockquote__action
 			button.blockquote__reload(
@@ -27,8 +27,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			componentVisibles: 'getComponentVisibles',
-			// lang: 'getLang',
+			settings: 'settings/getSettings',
 		}),
 		...mapGetters('settings', {
 			lang: 'getLang'
