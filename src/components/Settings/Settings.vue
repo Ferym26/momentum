@@ -10,7 +10,7 @@
 			:class='{"is-open": isOpen}'
 		)
 			.settings__item
-				.label Language
+				.label {{ lang === 'en' ? 'Language' : 'Язык' }}
 				.element
 					select.select(
 						v-model='lang'
@@ -20,7 +20,7 @@
 						option(value="ru") Ru
 
 			.settings__item
-				b.text Components visibility:
+				b.text {{ lang === 'en' ? 'Components visibility' : 'Видимость компонентов' }}:
 
 			.settings__item(v-for="comp in componentsVisibility" :key="comp")
 				label.label(for='setWinamp') {{comp}}
