@@ -30,6 +30,7 @@ export default {
 	},
 	created() {
 		this.checkList();
+		this.$store.dispatch('settings/loadSettings');
 	},
 	methods: {
 		checkList() {
