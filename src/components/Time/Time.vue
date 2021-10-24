@@ -1,6 +1,6 @@
 <template lang='pug'>
-	.time(
-		v-if='settings.visibility.Time'
+	.time.component(
+		:class='{"is-visible": isVisible}'
 	)
 		.time__clocks {{ clocks }}
 		.time__date {{ calendar }}
@@ -25,7 +25,10 @@ export default {
 		}),
 		calendarLocale() {
 			return this.lang === 'en' ? 'en-US' : 'ru-Ru'
-		}
+		},
+		isVisible() {
+			return this.settings?.visibility.Time ?? true
+		},
 	},
 	mounted() {
 		this.setTime();

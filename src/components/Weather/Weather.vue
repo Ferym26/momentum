@@ -1,6 +1,6 @@
 <template lang='pug'>
-	.weather(
-		v-if='settings.visibility.Weather'
+	.weather.component(
+		:class='{"is-visible": isVisible}'
 	)
 		.weather__city
 			input.weather__input(
@@ -55,6 +55,9 @@ export default {
 			lang: 'getLang',
 			settings: 'settings/getSettings',
 		}),
+		isVisible() {
+			return this.settings?.visibility.Weather ?? true
+		},
 	},
 	watch: {
 		lang() {

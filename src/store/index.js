@@ -7,21 +7,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		dayPeriod: null, // 0 ночь, 1 утро, 2 день, 3 вечер
-		componentVisibles: {
-			winamp: true,
-			weather: true,
-			blockquote: true,
-			greet: true,
-			time: true,
-		},
 		lang: 'en', // 'ru'
 	},
 	getters: {
 		getDayPeriod (state) {
 			return state.dayPeriod;
-		},
-		getComponentVisibles (state) {
-			return state.componentVisibles;
 		},
 		getLang(state) {
 			return state.lang
@@ -30,10 +20,6 @@ export default new Vuex.Store({
 	mutations: {
 		setDayPeriod (state, payload) {
 			state.dayPeriod = payload;
-		},
-		setComponentVisibles (state, payload) {
-			state.componentVisibles[payload.name] = payload.value;
-			localStorage.setItem(payload.name, payload.value);
 		},
 		setLang( state, payload) {
 			state.lang = payload;
@@ -57,6 +43,6 @@ export default new Vuex.Store({
 		},
 	},
 	modules: {
-		settings
+		settings,
 	}
 });

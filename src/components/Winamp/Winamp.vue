@@ -1,6 +1,6 @@
 <template lang='pug'>
-	.winamp(
-		v-if='settings.visibility.Winamp'
+	.winamp.component(
+		:class='{"is-visible": isVisible}'
 	)
 		.winamp__player
 			audio(
@@ -65,7 +65,10 @@ export default {
 	computed: {
 		...mapGetters({
 			settings: 'settings/getSettings',
-		})
+		}),
+		isVisible() {
+			return this.settings?.visibility.Winamp ?? true
+		},
 	},
 	created() {
 		this.setActiveTrack();

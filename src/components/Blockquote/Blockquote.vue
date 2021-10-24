@@ -1,6 +1,6 @@
 <template lang='pug'>
-	.blockquote(
-		v-if='settings.visibility.Blockquote'
+	.blockquote.component(
+		:class='{"is-visible": isVisible}'
 	)
 		.blockquote__action
 			button.blockquote__reload(
@@ -28,10 +28,11 @@ export default {
 	computed: {
 		...mapGetters({
 			settings: 'settings/getSettings',
+			lang: 'getLang',
 		}),
-		...mapGetters('settings', {
-			lang: 'getLang'
-		})
+		isVisible() {
+			return this.settings?.visibility.Blockquote ?? true
+		},
 	},
 	mounted() {
 		this.getRandomQuote();

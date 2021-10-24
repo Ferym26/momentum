@@ -1,6 +1,6 @@
 <template lang='pug'>
-	.greet(
-		v-if='settings.visibility.Greet'
+	.greet.component(
+		:class='{"is-visible": isVisible}'
 	)
 		.greet__title {{ setTitle() + ',' }}
 		.greet__form
@@ -32,6 +32,9 @@ export default {
 			lang: 'getLang',
 			settings: 'settings/getSettings',
 		}),
+		isVisible() {
+			return this.settings?.visibility.Greet ?? true
+		},
 	},
 	methods: {
 		getNameFromLS() {
