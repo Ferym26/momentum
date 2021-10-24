@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
 	name: 'Weather',
 	data() {
@@ -35,7 +36,7 @@ export default {
 			isError: false,
 			timer: null,
 			city: 'Минск',
-			lang: 'ru',
+			// lang: 'ru',
 			icon: null,
 			temp: '',
 			description: '',
@@ -46,6 +47,16 @@ export default {
 	mounted() {
 		this.getWeather();
 		this.getCityFromLS();
+	},
+	computed: {
+		...mapGetters({
+			lang: 'getLang',
+		}),
+	},
+	watch: {
+		lang() {
+			this.getWeather();
+		},
 	},
 	methods: {
 		getWeather() {

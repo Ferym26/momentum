@@ -12,9 +12,12 @@
 			.settings__item
 				.label Language
 				.element
-					select.select(name="lang")
-						option(value="EN") Eng
-						option(value="RU") Ru
+					select.select(
+						v-model='lang'
+						name="lang"
+					)
+						option(value="en") Eng
+						option(value="ru") Ru
 
 			.settings__item
 				b.text Components visibility:
@@ -64,6 +67,14 @@ export default {
 			set (val) {
 				this.$store.commit('setComponentVisibles', { name: 'weather', value: val })
 			}
+		},
+		lang: {
+			get() {
+				return this.$store.state.lang
+			},
+			set(val) {
+				this.$store.commit('setLang', val)
+			},
 		},
 	},
 	created() {
