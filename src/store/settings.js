@@ -2,7 +2,15 @@ const module = {
 	namespaced: true,
 
 	state: {
-		settings: {}
+		settings: {
+			visibility: {
+				Winamp: true,
+				Weather: true,
+				Time: true,
+				Greet: true,
+				Blockquote: true,
+			},
+		},
 	},
 
 	mutations: {
@@ -29,7 +37,7 @@ const module = {
 					localStorage.removeItem("momentum_settings");
 				}
 			}
-		}, 
+		},
 		saveSettings({state}){
 			localStorage.setItem('momentum_settings', JSON.stringify(state.settings))
 		},
