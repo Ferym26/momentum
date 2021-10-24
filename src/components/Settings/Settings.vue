@@ -22,18 +22,13 @@
 			.settings__item
 				b.text Components visibility:
 
-			.settings__item
-				label.label(for='setWinamp') Winamp
+			.settings__item(v-for="comp in componentsVisibility" :key="comp")
+				label.label(for='setWinamp') {{comp}}
 				.element
 					input.input#setWinamp(
-						v-model='winampStatus'
-						type="checkbox"
-					)
-			.settings__item
-				label.label(for='setWeather') Weather
-				.element
-					input.input#setWeather(
-						v-model='weatherStatus'
+						v-model="componentsVisibilityChecked"
+						:value='comp'
+						@change="(e) => checkBoxChangeHandler(e, comp)"
 						type="checkbox"
 					)
 </template>
@@ -44,48 +39,60 @@ export default {
 	data() {
 		return {
 			isOpen: true,
+			componentsVisibility: ['Winamp', 'Weather'],
+			componentsVisibilityChecked: [],
+
 		}
 	},
 	computed: {
-		winampStatus: {
-			get () {
-				if (localStorage.getItem('winamp')) {
-					return localStorage.getItem('winamp')
-				} else {
-					return this.$store.state.componentVisibles.winamp
-				}
-			},
-			set (val) {
-				this.$store.commit('setComponentVisibles', { name: 'winamp', value: val });
-				localStorage.setItem('winamp', val);
-			}
-		},
-		weatherStatus: {
-			get () {
-				return this.$store.state.componentVisibles.weather
-			},
-			set (val) {
-				this.$store.commit('setComponentVisibles', { name: 'weather', value: val })
-			}
+		visibility(){
+			return this.$store.getters["settings/getSettings"].visibility;
 		},
 		lang: {
 			get() {
 				return this.$store.state.lang
 			},
 			set(val) {
+				this.$store.dispatch('settings/changeField', {name: 'language', data: val});
 				this.$store.commit('setLang', val)
 			},
 		},
 	},
 	created() {
-		// this.setSettings();
+		this.updateCheckboxes();
 	},
 	mounted() {
 		//
 	},
 	methods: {
-		//
+		getVisibility(){
+		},
+		checkBoxChangeHandler(e, componentName){
+			this.$store.dispatch('settings/changeField', {name: 'visibility', data: {[componentName]: e.target.checked}});
+		},
+		updateCheckboxes(){
+			const visibility = this.visibility;
+			if(!visibility){
+				this.componentsVisibilityChecked = ['Winamp', 'Weather'];
+			}
+
+			let checked = [];
+			this.componentsVisibility.forEach(comp => {
+				if((visibility[comp] || visibility[comp])){
+					checked.push(comp);
+				}
+			});
+
+			this.componentsVisibilityChecked = [...checked];
+		}
 	},
+	watch: {
+		visibility: {
+      handler: 'updateCheckboxes',
+      deep: true,
+      immediate: true
+		}
+	}
 }
 </script>
 
