@@ -1,0 +1,40 @@
+@import '../../assets/styles/helpers/variables'
+@import '../../assets/styles/helpers/mixin'
+
+a,
+button,
+input,
+select
+	cursor: none !important
+
+.m-cursor
+	position: absolute
+	top: 0
+	left: 0
+	+sizeblock(12px)
+	background-color: #fff
+	+circle
+	z-index: 1001
+	pointer-events: none
+	mix-blend-mode: difference
+
+	+mediaMax(1300px)
+		display: none
+
+	body.no-js &
+		display: none
+
+	.m-cursor-circle
+		position: absolute
+		+center
+		+sizeblock(52px)
+		background-color: rgba(204, 204, 204, 0.3)
+		transition: background-color 0.3s ease
+		+circle
+		z-index: -5
+
+	&.is-active
+
+		.m-cursor-circle
+			+sizeblock(66px)
+			background-color: rgba(204, 204, 204, 0.15)

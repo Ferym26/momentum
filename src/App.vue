@@ -7,6 +7,7 @@
 		Time
 		Greet
 		Settings
+		MCursor
 </template>
 
 <script>
@@ -17,6 +18,7 @@ import Blockquote from "@/components/Blockquote/Blockquote";
 import Time from "@/components/Time/Time";
 import Greet from "@/components/Greet/Greet";
 import Settings from "@/components/Settings/Settings";
+import MCursor from "@/components/MCursor/MCursor";
 export default {
 	name: 'App',
 	components: {
@@ -27,6 +29,7 @@ export default {
 		Time,
 		Greet,
 		Settings,
+		MCursor,
 	},
 	created() {
 		this.checkList();
