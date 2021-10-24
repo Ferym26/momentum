@@ -14,6 +14,7 @@ export default new Vuex.Store({
 			greet: true,
 			time: true,
 		},
+		lang: 'en', // 'ru'
 	},
 	getters: {
 		getDayPeriod (state) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
 		},
 		getComponentVisibles (state) {
 			return state.componentVisibles;
+		},
+		getLang(state) {
+			return state.lang
 		},
 	},
 	mutations: {
@@ -30,6 +34,9 @@ export default new Vuex.Store({
 		setComponentVisibles (state, payload) {
 			state.componentVisibles[payload.name] = payload.value;
 			localStorage.setItem(payload.name, payload.value);
+		},
+		setLang( state, payload) {
+			state.lang = payload;
 		},
 	},
 	actions: {

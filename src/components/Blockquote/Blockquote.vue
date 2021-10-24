@@ -8,8 +8,8 @@
 			)
 				img(:src="require(`@/assets/svg/reload.svg`)", alt="bg")
 		.blockquote__content
-			.blockquote__title {{ quote.text }}
-			.blockquote__name {{ quote.author }}
+			.blockquote__title {{ quote[lang].text }}
+			.blockquote__name {{ quote[lang].author }}
 </template>
 
 <script>
@@ -19,12 +19,16 @@ export default {
 	name: 'Blockquote',
 	data() {
 		return {
-			quote: {},
+			quote: {
+				ru: {},
+				en: {},
+			},
 		}
 	},
 	computed: {
 		...mapGetters({
-			componentVisibles: 'getComponentVisibles'
+			componentVisibles: 'getComponentVisibles',
+			lang: 'getLang',
 		})
 	},
 	mounted() {
