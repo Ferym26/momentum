@@ -37,7 +37,7 @@ export default {
 			isLoaded: false,
 			isError: false,
 			timer: null,
-			city: 'Минск',
+			city: 'Minsk',
 			// lang: 'ru',
 			icon: null,
 			temp: '',
