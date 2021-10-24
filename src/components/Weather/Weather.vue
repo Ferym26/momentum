@@ -16,14 +16,14 @@
 			.weather__t
 				.weather__t-num {{ temp }}°C
 				.weather__t-text {{ description }}
-			.weather__wind Wind speed: {{ wind }} m/s
-			.weather__humidity Humidity: {{ humidity }}%
+			.weather__wind {{ lang === 'en' ? 'Wind speed' : 'Скорость ветра' }}: {{ wind }} {{ lang === 'en' ? 'm/s' : 'м/с' }}
+			.weather__humidity {{ lang === 'en' ? 'Humidity' : 'Влажность' }}: {{ humidity }}%
 		.weather__preloader(
 			v-if='!isLoaded'
-		) загрузка
+		) {{ lang === 'en' ? 'Loading' : 'Загрузка' }}
 		.weather__error(
 			v-if='isError'
-		) ошибка
+		) {{ lang === 'en' ? 'Error' : 'Ошибка' }}
 </template>
 
 <script>
