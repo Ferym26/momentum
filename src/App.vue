@@ -35,6 +35,7 @@ export default {
 	mixins: [checklist],
 	created() {
 		this.checkList();
+		this.$store.dispatch('settings/loadSettings');
 	},
 }
 </script>
