@@ -7,6 +7,11 @@
 	grid-row: 2 / span 1
 	z-index: 20
 
+	+mediaMax($lg)
+		grid-column: auto
+		grid-row: auto
+		order: 1
+
 	&__clocks
 		text-align: center
 		color: #fff
@@ -14,8 +19,14 @@
 		font-weight: 700
 		text-shadow: 1px 1px 3px #000
 
+		+mediaMax($lg)
+			font-size: 40px
+
 	&__date
 		text-align: center
 		color: #fff
 		font-size: 40px
 		text-shadow: 1px 1px 3px #000
+
+		+mediaMax($lg)
+			font-size: 20px

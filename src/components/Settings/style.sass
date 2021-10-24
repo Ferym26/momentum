@@ -7,10 +7,22 @@
 	grid-row: 4 / span 1
 	z-index: 20
 
+	+mediaMax($lg)
+		position: absolute
+		grid-column: auto
+		grid-row: auto
+		left: 0
+		bottom: 0
+		order: 10
+
 	&__action
 		position: absolute
 		bottom: 30px
 		left: 30px
+
+		+mediaMax($lg)
+			bottom: 15px
+			left: 15px
 
 	&__menu
 		position: fixed
@@ -58,6 +70,9 @@
 		background-color: $trp
 		cursor: pointer
 		transition: transform 0.3s ease-in-out
+
+		+mediaMax($lg)
+			+sizeblock(30px)
 
 		&:hover
 			transform: scale(1.1)

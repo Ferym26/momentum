@@ -12,6 +12,11 @@
 	grid-row: 3 / span 1
 	z-index: 20
 
+	+mediaMax($lg)
+		grid-column: auto
+		grid-row: auto
+		order: 2
+
 	&__form
 		position: relative
 
@@ -22,8 +27,14 @@
 		color: #fff
 		text-shadow: 1px 1px 3px #000
 
+		+mediaMax($lg)
+			font-size: 18px
+
 	&__name
 		height: 37px
+
+		+mediaMax($lg)
+			height: 21px
 
 	&__input
 		position: absolute
@@ -38,3 +49,6 @@
 		font-family: $font-one
 		border: none
 		background-color: $trp
+
+		+mediaMax($lg)
+			font-size: 18px

@@ -8,6 +8,11 @@
 	align-self: end
 	padding-bottom: 30px
 
+	+mediaMax($lg)
+		grid-column: auto
+		grid-row: auto
+		order: 5
+
 	&__action
 		display: flex
 		justify-content: center
@@ -33,5 +38,11 @@
 		font-size: 24px
 		font-style: italic
 
+		+mediaMax($lg)
+			font-size: 20px
+
 	&__name
 		font-size: 18px
+
+		+mediaMax($lg)
+			font-size: 16px

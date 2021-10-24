@@ -5,7 +5,9 @@ a,
 button,
 input,
 select
-	cursor: none !important
+
+	+mediaMin($lg)
+		cursor: none !important
 
 .m-cursor
 	position: absolute
@@ -18,7 +20,7 @@ select
 	pointer-events: none
 	mix-blend-mode: difference
 
-	+mediaMax(1300px)
+	+mediaMax($lg)
 		display: none
 
 	body.no-js &

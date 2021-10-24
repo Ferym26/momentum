@@ -6,6 +6,16 @@
 	grid-column: 1 / span 3
 	grid-row: 1 / span 4
 
+	+mediaMax($lg)
+		position: absolute
+		grid-column: auto
+		grid-row: auto
+		+sizeblock(100%)
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+
 	&__bg
 		+sizeblock(100%)
 		background-color: #000
@@ -31,10 +41,17 @@
 		background-color: $trp
 		cursor: pointer
 
-
+		+mediaMax($lg)
+			+sizeblock(30px)
+			top: 15px
+			transform: none
+			z-index: 1000
 
 		&--prev
 			left: 30px
+
+			+mediaMax($lg)
+				left: 15px
 
 			&:hover
 
@@ -43,6 +60,9 @@
 
 		&--next
 			right: 30px
+
+			+mediaMax($lg)
+				right: 15px
 
 			&:hover
 
