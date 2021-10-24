@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
 	name: 'Time',
 	data() {
@@ -16,6 +16,14 @@ export default {
 			intervel: null,
 		}
 	},
+	computed: {
+		...mapGetters({
+			lang: 'getLang',
+		}),
+		calendarLocale() {
+			return this.lang === 'en' ? 'en-US' : 'ru-Ru'
+		}
+	},
 	mounted() {
 		this.setTime();
 	},
@@ -24,6 +32,7 @@ export default {
 			DayPeriod: 'DayPeriod',
 		}),
 		setTime() {
+			const _this = this;
 			const optionsClock = {
 				hour12: false,
 				hour: '2-digit',
@@ -38,7 +47,7 @@ export default {
 			};
 			this.interval = setInterval(() => {
 				this.clocks = new Intl.DateTimeFormat('ru-Ru', optionsClock).format(new Date());
-				this.calendar = new Intl.DateTimeFormat('en-US', optionsCalendar).format(new Date());
+				this.calendar = new Intl.DateTimeFormat(_this.calendarLocale, optionsCalendar).format(new Date());
 				this.DayPeriod();
 			}, 1000);
 		},
