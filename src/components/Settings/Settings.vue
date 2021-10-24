@@ -48,32 +48,12 @@ export default {
 		visibility(){
 			return this.$store.getters["settings/getSettings"].visibility;
 		},
-		winampStatus: {
-			get () {
-				if (localStorage.getItem('winamp')) {
-					return localStorage.getItem('winamp')
-				} else {
-					return this.$store.state.componentVisibles.winamp
-				}
-			},
-			set (val) {
-				this.$store.commit('setComponentVisibles', { name: 'winamp', value: val });
-				localStorage.setItem('winamp', val);
-			}
-		},
-		weatherStatus: {
-			get () {
-				return this.$store.state.componentVisibles.weather
-			},
-			set (val) {
-				this.$store.commit('setComponentVisibles', { name: 'weather', value: val })
-			}
-		},
 		lang: {
 			get() {
 				return this.$store.state.lang
 			},
 			set(val) {
+				this.$store.dispatch('settings/changeField', {name: 'language', data: val});
 				this.$store.commit('setLang', val)
 			},
 		},

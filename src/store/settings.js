@@ -10,7 +10,11 @@ const module = {
 			state.settings = data;
 		},
 		setSpecificField(state, {name, data}){
-			state.settings[name] = {...state.settings[name], ...data};
+			if(typeof data == 'object'){
+				state.settings[name] = {...state.settings[name], ...data};
+			} else {
+				state.settings[name] = data;
+			}
 		}
 	},
 
@@ -38,6 +42,9 @@ const module = {
 	getters: {
 		getSettings(state){
 			return state.settings;
+		},
+		getLang(state){
+			return state.settings?.language ?? 'en';
 		}
 	}
 };
