@@ -47,7 +47,6 @@ export default {
 		}
 	},
 	mounted() {
-		this.getWeather();
 		this.getCityFromLS();
 	},
 	computed: {
@@ -77,9 +76,9 @@ export default {
 					// console.log(data);
 					this.isError = false;
 					this.icon = data.weather[0].id;
-					this.temp = data.main.temp;
+					this.temp = Math.round(data.main.temp);
 					this.description = data.weather[0].description;
-					this.wind = data.wind.speed;
+					this.wind = Math.round(data.wind.speed);
 					this.humidity = data.main.humidity;
 					this.isLoaded = true;
 				})
@@ -104,6 +103,9 @@ export default {
 		getCityFromLS() {
 			if(localStorage.getItem('city')) {
 				this.city = localStorage.getItem('city');
+				this.getWeather();
+			} else {
+				this.getWeather();
 			}
 		},
 	},

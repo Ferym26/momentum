@@ -13,6 +13,15 @@ const module = {
 		},
 	},
 
+	getters: {
+		getSettings(state){
+			return state.settings;
+		},
+		// getLang(state){
+		// 	return state.settings?.language ?? 'en';
+		// }
+	},
+
 	mutations: {
 		setData(state, data){
 			state.settings = data;
@@ -46,15 +55,6 @@ const module = {
 			dispatch('saveSettings');
 		}
 	},
-
-	getters: {
-		getSettings(state){
-			return state.settings;
-		},
-		getLang(state){
-			return state.settings?.language ?? 'en';
-		}
-	}
 };
 
 export default module;

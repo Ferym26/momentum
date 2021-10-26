@@ -41,7 +41,6 @@ export default {
 			isOpen: false,
 			componentsVisibility: ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote'],
 			componentsVisibilityChecked: [],
-
 		}
 	},
 	computed: {
@@ -50,16 +49,19 @@ export default {
 		},
 		lang: {
 			get() {
-				return this.$store.state.lang
+				return this.$store.getters.getLang
 			},
 			set(val) {
-				this.$store.dispatch('settings/changeField', {name: 'language', data: val});
-				this.$store.commit('setLang', val)
+				// this.$store.dispatch('settings/changeField', {name: 'language', data: val});
+				this.$store.commit('setLang', val);
 			},
 		},
 	},
 	created() {
 		this.updateCheckboxes();
+		if(localStorage.getItem('Lang')) {
+			this.lang = localStorage.getItem('Lang')
+		}
 	},
 	methods: {
 		getVisibility(){

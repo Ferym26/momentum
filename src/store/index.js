@@ -5,10 +5,12 @@ import settings from "./settings";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+
 	state: {
 		dayPeriod: null, // 0 ночь, 1 утро, 2 день, 3 вечер
 		lang: 'en', // 'ru'
 	},
+
 	getters: {
 		getDayPeriod (state) {
 			return state.dayPeriod;
@@ -17,14 +19,17 @@ export default new Vuex.Store({
 			return state.lang
 		},
 	},
+
 	mutations: {
 		setDayPeriod (state, payload) {
 			state.dayPeriod = payload;
 		},
 		setLang( state, payload) {
+			localStorage.setItem('Lang', payload);
 			state.lang = payload;
 		},
 	},
+
 	actions: {
 		DayPeriod ({ commit }) {
 			const currentHour = +new Intl.DateTimeFormat('ru-Ru', {hour: '2-digit', hour12: false}).format(new Date()); // получаем числовое значение часа
@@ -42,6 +47,7 @@ export default new Vuex.Store({
 			}
 		},
 	},
+
 	modules: {
 		settings,
 	}
