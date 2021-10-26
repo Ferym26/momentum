@@ -39,7 +39,7 @@ export default {
 	data() {
 		return {
 			isOpen: false,
-			componentsVisibility: ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote'],
+			componentsVisibility: ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote', 'MCursor'],
 			componentsVisibilityChecked: [],
 		}
 	},
@@ -72,7 +72,7 @@ export default {
 		updateCheckboxes(){
 			const visibility = this.visibility;
 			if(!visibility){
-				this.componentsVisibilityChecked = ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote'];
+				this.componentsVisibilityChecked = ['Winamp', 'Weather', 'Time', 'Greet', 'Blockquote', 'MCursor'];
 			}
 
 			let checked = [];

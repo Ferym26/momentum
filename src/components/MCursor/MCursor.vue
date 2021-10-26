@@ -1,12 +1,13 @@
 <template lang='pug'>
 	.m-cursor(
 		ref="cursor"
-		:class='{"is-active": isActive}'
+		:class='{"is-active": isActive, "is-visible": isVisible}'
 	)
 		.m-cursor-circle
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { gsap } from 'gsap'
 export default {
 	name: 'MCursor',
@@ -15,7 +16,27 @@ export default {
 			isActive: false,
 		}
 	},
+	computed: {
+		...mapGetters({
+			settings: 'settings/getSettings',
+		}),
+		isVisible() {
+			return this.settings?.visibility.MCursor ?? true
+		},
+	},
+	watch: {
+		isVisible() {
+			if (this.isVisible) {
+				document.body.classList.add('m-cursor-on');
+			} else {
+				document.body.classList.remove('m-cursor-on');
+			}
+		},
+	},
 	mounted() {
+		if (this.isVisible) {
+			document.body.classList.add('m-cursor-on');
+		}
 		this.move();
 	},
 	methods: {

@@ -2,15 +2,17 @@
 @import '../../assets/styles/helpers/mixin'
 
 body
-	cursor: none
 
-a,
-button,
-input,
-select
+	&.m-cursor-on
+		cursor: none
 
-	+mediaMin($lg)
-		cursor: none !important
+		a,
+		button,
+		input,
+		select
+
+			+mediaMin($lg)
+				cursor: none !important
 
 .m-cursor
 	position: absolute
@@ -22,6 +24,7 @@ select
 	z-index: 1001
 	pointer-events: none
 	mix-blend-mode: difference
+	transition: opacity 0.3s ease
 
 	+mediaMax($lg)
 		display: none
@@ -43,3 +46,6 @@ select
 		.m-cursor-circle
 			+sizeblock(66px)
 			background-color: rgba(204, 204, 204, 0.15)
+
+	&:not(.is-visible)
+		opacity: 0

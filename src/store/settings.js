@@ -9,6 +9,7 @@ const module = {
 				Time: true,
 				Greet: true,
 				Blockquote: true,
+				MCursor: true,
 			},
 		},
 	},
@@ -17,9 +18,6 @@ const module = {
 		getSettings(state){
 			return state.settings;
 		},
-		// getLang(state){
-		// 	return state.settings?.language ?? 'en';
-		// }
 	},
 
 	mutations: {
